@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
+    <title>Document</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../css/pages.min.css" />
+
+    <!-- External JavaScript -->
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- Main container -->
+    <div class="cont">
+      <!-- Content container -->
+      <div class="content-container">
+        <!-- Left side section -->
+        <div class="left-side">
+          <!-- Left side heading -->
+          <div class="left-side-heading align-content-center">
+            <p class="mx-4 fs-5 my-auto fw-medium">LOANS</p>
+          </div>
+
+          <!-- Left side accounts -->
+          <div class="left-side-accounts">
+            <!-- Skeleton container for loading state -->
+            <div
+              class="skeleton-container w-100 h-100 d-flex justify-content-center align-content-center align-items-center">
+              <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left side create button -->
+          <div class="left-side-create-btn">
+            <p class="my-auto">APPLY LOAN</p>
+          </div>
+        </div>
+
+        <!-- Right side section -->
+        <div class="right-side"></div>
+      </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../../config/config.js"></script>
+    <script src="../../config/guard.js"></script>
+
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../../scripts/loans.js"></script>
+  </body>
+</html>

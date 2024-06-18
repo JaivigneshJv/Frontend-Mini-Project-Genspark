@@ -1,0 +1,218 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.bg {
+  position: relative;
+  background-color: #dfe2e4;
+  height: 100vh;
+  z-index: 0;
+}
+.bg-image {
+  z-index: 0;
+  position: absolute;
+  opacity: 0.9;
+  top: 15vh;
+  right: 0;
+  z-index: -1;
+  width: 50vw;
+  height: 80vh;
+  margin: auto;
+}
+.gray-bg {
+  z-index: 0;
+  position: absolute;
+  background-color: #e4e7e8;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  clip-path: ellipse(55% 100% at 0% 70%);
+  height: 100vh;
+  border-radius: 0 0 0 0;
+}
+.main-container {
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.nav-bar {
+  height: 20vh;
+  width: 100vw !important;
+  padding: 2vw;
+  &-img {
+    width: 5vw;
+  }
+  &-title {
+    font-size: 2.5vw;
+    font-weight: 200;
+    margin-top: 2vh;
+    &-description {
+      font-size: 3vw;
+      font-weight: 300;
+    }
+  }
+}
+.content-container {
+  display: flex;
+  height: 80vh;
+  width: 50vw;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  display: flex;
+  height: 40vh;
+  width: 30vw;
+}
+.login-container-register {
+  display: flex;
+  height: 40vh;
+  width: 30vw;
+  margin-top: -25vh;
+}
+.login-title {
+  width: 10vw;
+  height: 3.5vh;
+  background-color: black;
+  border-radius: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  &-text {
+    font-size: 1.5vw;
+    color: white;
+  }
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 100%;
+  height: 100%;
+}
+.input {
+  background-color: transparent;
+  border: 1px solid black;
+  font-size: 1.3vw;
+  border-radius: 30px;
+  margin-bottom: 2vh;
+  padding-left: 1vw;
+  &:focus::placeholder {
+    color: transparent;
+  }
+  caret-color: transparent;
+}
+.login-btn {
+  display: flex;
+  align-self: flex-end;
+  width: 10vw;
+  height: 60%;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #c7cacb;
+  border: 1px solid gray;
+  margin-top: 1.5vh;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e4e7e8;
+    overflow: hidden;
+  }
+  .bg {
+    display: none;
+  }
+  .nav-bar {
+    height: 10vh;
+    width: 100vw !important;
+    padding: 2vw;
+    &-img {
+      width: 15vw;
+    }
+    &-title {
+      font-size: 6vw;
+      font-weight: 200;
+      margin-top: 2vh;
+      &-description {
+        font-size: 5vw;
+        font-weight: 300;
+      }
+    }
+  }
+  .content-container {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    display: flex;
+    height: 40vh;
+    width: 70vw;
+  }
+  .login-container-register {
+    display: flex;
+    height: 40vh;
+    width: 70vw;
+  }
+  .login-title {
+    width: 25vw;
+    height: 3vh;
+    background-color: black;
+    border-radius: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    &-text {
+      font-size: 4vw;
+      color: white;
+    }
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    width: 100%;
+    height: 100%;
+  }
+  .input {
+    background-color: transparent;
+    border: 1px solid black;
+    font-size: 4vw;
+    border-radius: 30px;
+    margin-bottom: 2vh;
+    padding-left: 3vw;
+    &:focus::placeholder {
+      color: transparent;
+    }
+    caret-color: transparent;
+  }
+  .login-btn {
+    display: flex;
+    align-self: flex-end;
+    width: 20vw;
+    height: 3vh;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: #c7cacb;
+    border: 1px solid gray;
+    margin-top: 1.5vh;
+    font-size: 3vw;
+    &-text {
+      font-size: 3.5vw;
+    }
+  }
+}

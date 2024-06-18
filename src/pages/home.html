@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../css/home.min.css" />
+    
+    <!-- External JavaScript libraries -->
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar p-4">
+      <div class="row">
+        <!-- Logo and Brand Name -->
+        <div class="col-sm-8 col-lg-4 d-flex align-items-center align-content-center">
+          <img src="../../assets/banklogo-thin.svg" style="width: 2.5vw" />
+          <p class="fw-lighter my-auto mx-4" style="font-weight: 100; font-size: 2.5vw">
+            Simple Bank
+          </p>
+        </div>
+        
+        <!-- Mobile Navigation Toggle Button -->
+        <div class="col-sm-4 col-lg-8 d-md-none d-sm-flex justify-content-end">
+          <nav class="navbar">
+            <div class="container-fluid d-flex justify-content-end">
+              <button
+                id="nav-btn"
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navBarToggleContent"
+                aria-controls="navBarToggleContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+        </div>
+        
+        <!-- Desktop Navigation Links -->
+        <div class="col-md-8 col-sm-12">
+          <div class="collapse d-md-flex justify-content-end align-items-center text-end gap-3 my-auto h-100 mx-5"
+            id="navBarToggleContent">
+            <a id="dashboard-link" href="#" onclick="loadContent('dashboard.html')" class="text-dark fw-light">Dashboard</a>
+            <a href="#" onclick="loadContent('transactions.html')" class="text-dark fw-light">Transactions</a>
+            <a href="#" onclick="loadContent('loans.html')" class="text-dark fw-light">Loans</a>
+            <a href="#" onclick="loadContent('profile.html')" class="text-dark fw-light">Profile</a>
+            <div class="logout-btn" id="logout-btn">
+              <p class="m-auto">Logout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Content Frame -->
+    <iframe id="contentFrame" src="dashboard.html"></iframe>
+    
+    <!-- External JavaScript files -->
+    <script src="../../config/config.js"></script>
+    <script src="../../scripts/home.js"></script>
+  </body>
+</html>

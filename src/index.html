@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="../css/main.min.css" />
+    <!-- Link to AOS library CSS file -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Link to AOS library JavaScript file -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <!-- Background section -->
+    <div class="bg">
+      <img
+        src="../assets/bg-image-bank-stable-diffusion.png"
+        alt=""
+        class="bg-image img-fluid" />
+      <div class="gray-bg"></div>
+    </div>
+    <!-- Main container -->
+    <div class="main-container">
+      <!-- Mobile navigation bar -->
+      <div class="nav-bar-mobile">
+        <div class="d-flex">
+          <img src="../assets/banklogo.svg" alt="" style="width: 8vw" />
+          <p class="m-auto mx-2" style="font-size: 5vw">SIMPLE BANK</p>
+        </div>
+        <div class="">
+          <!-- Login button -->
+          <a
+            href="./auth/login.html"
+            style="text-decoration: inherit; color: inherit">
+            <div class="login-btn">
+              <p class="m-auto" style="font-size: 4.5vw">SIGN IN</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Navigation bar -->
+      <div class="nav-bar p-4">
+        <div class="row">
+          <!-- Logo and brand name -->
+          <div class="nav-bar-logo-container col-md-4 col-lg-4 col-xl-5 d-flex">
+            <div class="logo d-flex align-content-center">
+              <img src="../assets/banklogo.svg" alt="" style="width: 2vw" />
+            </div>
+            <div class="">
+              <p class="m-auto mx-4" style="font-size: 1.6vw; font-weight: 300">
+                SIMPLE BANK
+              </p>
+            </div>
+          </div>
+          <!-- Menu items -->
+          <div
+            class="nav-bar-menu-container menus col-md-5 col-lg-4 col-xl-3 justify-content-evenly d-flex">
+            <div class="p align-content-center">Home</div>
+            <div class="p align-content-center">Services</div>
+            <div class="p align-content-center">About</div>
+          </div>
+          <!-- Login button -->
+          <div
+            class="nav-bar-login-container col-md-3 col-lg-4 col-xl-4 d-flex justify-content-end">
+            <a
+              href="./auth/login.html"
+              style="text-decoration: inherit; color: inherit">
+              <div class="login-btn mx-5">
+                <p class="m-auto" style="font-size: 1.1vw">SIGN IN</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Content container -->
+      <div class="content-container">
+        <!-- First half of the content -->
+        <div class="content-container-half-one col-5 d-flex flex-column">
+          <div class="">
+            <!-- Title and description -->
+            <p
+              class="content-container-title-heading"
+              data-aos="fade-right"
+              data-aos-duration="1500">
+              Smart Banking With Simple Bank
+            </p>
+            <p
+              class="content-container-title-description"
+              data-aos="fade-right"
+              data-aos-duration="3000">
+              At Simple Bank, we believe that managing your finances should be
+              easy, intuitive, and empowering. With our innovative banking
+              solutions, you can take control of your money and achieve your
+              financial goals with confidence and assurance.
+            </p>
+            <!-- Register button -->
+            <a
+              href="./auth/register.html"
+              style="text-decoration: inherit; color: inherit">
+              <div
+                class="register-btn"
+                data-aos="fade-right"
+                data-aos-duration="3000">
+                <p class="register-btn-text m-auto">Register</p>
+              </div>
+            </a>
+          </div>
+          <div class="my-5 d-flex">
+            <!-- Badges section -->
+            <div
+              class="box-content d-flex flex-column"
+              data-aos="zoom-out-up"
+              data-aos-duration="3000"
+              style="position: relative">
+              <img src="../assets/Savings.png" alt="" class="badges-img" />
+              <p class="badges-text d-flex justify-content-center">Savings</p>
+              <p class="badges-description">
+                Our savings accounts are designed to help you grow your money
+                effortlessly while keeping it safe and accessible.
+              </p>
+            </div>
+            <div
+              class="box-content d-flex flex-column"
+              style="position: relative; margin-left: 2vw"
+              data-aos="zoom-out-up"
+              data-aos-duration="3000">
+              <img src="../assets/loan.png" alt="" class="badges-img" />
+              <p class="badges-text d-flex justify-content-center">Loans</p>
+              <p class="badges-description">
+                Whether you're looking to buy a home, finance a car, or need
+                extra funds for personal reasons, Simple Bank offers a range of
+                loan options to fit your needs.
+              </p>
+            </div>
+            <div
+              class="box-content d-flex flex-column"
+              style="position: relative; margin-left: 2vw"
+              data-aos="zoom-out-up"
+              data-aos-duration="3000">
+              <img src="../assets/transfers.png" alt="" class="badges-img" />
+              <p class="badges-text d-flex justify-content-center">Transfers</p>
+              <p class="badges-description">
+                With Simple Bank, transferring money is quick, easy, and secure.
+                Whether you're sending money to family, paying bills, or moving
+                funds between accounts, we've got you covered.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Second half of the content -->
+        <div class="content-container-half-two col-5"></div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript file -->
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- Initialize AOS library -->
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

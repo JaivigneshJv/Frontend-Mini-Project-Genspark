@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../css/pages.min.css" />
+
+    <!-- External JavaScript libraries -->
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="cont">
+      <div class="d-flex h-100 w-100">
+        <div class="col-6 d-flex align-items-center justify-content-center">
+          <div
+            class="w-75 h-50 border border-dark rounded-5 d-flex flex-column">
+            <!-- Profile section -->
+            <div class="profile">
+              <img
+                src="../../assets/profile.png"
+                alt=""
+                class="d-flex m-auto mt-5"
+                style="width: 2.5vw" />
+              <p class="text-center fs-5 mt-3 fw-thin">John Doe</p>
+            </div>
+
+            <!-- Details section -->
+            <div class="mt-2 p-1 d-flex flex-column gap-2 mx-5">
+              <!-- Email details -->
+              <div class="email-details center">
+                <img
+                  src="../../node_modules/bootstrap-icons/icons/envelope.svg"
+                  style="width: 1.5vw"
+                  alt=""
+                  class="" />
+                <p class="d-inline ms-3 fw-light">email@email.com</p>
+              </div>
+
+              <!-- Date of Birth details -->
+              <div class="dob-details center">
+                <img
+                  src="../../node_modules/bootstrap-icons/icons/calendar4-event.svg"
+                  style="width: 1.5vw"
+                  alt=""
+                  class="" />
+                <p class="d-inline ms-3 fw-light">10 / 11 /2002</p>
+              </div>
+
+              <!-- Contact details -->
+              <div class="contact-details center">
+                <img
+                  src="../../node_modules/bootstrap-icons/icons/person.svg"
+                  style="width: 1.5vw"
+                  alt=""
+                  class="" />
+                <p class="d-inline ms-3 fw-light">+91 123456789</p>
+              </div>
+            </div>
+
+            <!-- Redirect buttons section -->
+            <div class="redirect-btns p-2 d-flex gap-3 fw-light mx-5">
+              <div class="redirect-btn border border-dark rounded-3 p-1">
+                Change Transaction Password
+              </div>
+              <div class="redirect-btn border border-dark rounded-3 p-1">
+                Change Password
+              </div>
+              <div class="redirect-btn border border-dark rounded-3 p-1">
+                Update Email
+              </div>
+            </div>
+
+            <!-- Created date section -->
+            <div
+              class="created-container mx-3 mt-4 fw-light d-flex justify-content-end">
+              Created: 22 June 2024 11 : 30
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional scripts -->
+    <script src="../../config/config.js"></script>
+    <script src="../../config/guard.js"></script>
+
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../../scripts/profile.js"></script>
+  </body>
+</html>

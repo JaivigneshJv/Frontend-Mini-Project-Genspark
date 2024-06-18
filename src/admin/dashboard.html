@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/pages.min.css" />
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- Main container -->
+    <div class="cont">
+      <div class="content-container">
+        <!-- Left side -->
+        <div class="left-side">
+          <div class="left-side-heading align-content-center">
+            <p class="mx-4 fs-5 my-auto fw-medium">Admin Dashboard</p>
+          </div>
+          <div
+            class="left-side-accounts d-flex flex-column gap-2 align-items-center">
+            <!-- IMPS -->
+            <div
+              id="users"
+              class="border border-dark-subtle rounded-5 mt-5 d-flex align-content-center align-items-center justify-content-between"
+              style="height: 1vh; padding: 5%; width: 90%">
+              <div class="">USERS</div>
+              <img
+                src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
+                alt="" />
+            </div>
+            <div
+              id="accounts"
+              class="border border-dark-subtle rounded-5 mt-3 d-flex align-content-center align-items-center justify-content-between"
+              style="height: 1vh; padding: 5%; width: 90%">
+              <div class="">ACCOUNTS</div>
+              <img
+                src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
+                alt="" />
+            </div>
+            <div
+              id="transactions"
+              class="border border-dark-subtle rounded-5 mt-3 d-flex align-content-center align-items-center justify-content-between"
+              style="height: 1vh; padding: 5%; width: 90%">
+              <div class="">TRANSACTIONS</div>
+              <img
+                src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
+                alt="" />
+            </div>
+            <div
+              id="loans"
+              class="border border-dark-subtle rounded-5 mt-3 d-flex align-content-center align-items-center justify-content-between"
+              style="height: 1vh; padding: 5%; width: 90%">
+              <div class="">LOANS</div>
+              <img
+                src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
+                alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="right-side d-flex flex-column justify-content-between">
+          <div class="">
+            <h3></h3>
+            <p></p>
+          </div>
+          <div
+            class="transact-btn w-auto d-flex justify-content-end"
+            style="display: none !important"></div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript dependencies -->
+    <script src="../../config/config.js"></script>
+    <script src="../../config/guard-admin.js"></script>
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../../scripts/admin.js"></script>
+  </body>
+</html>

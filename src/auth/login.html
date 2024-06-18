@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/auth.min.css" />
+    <title>Document</title>
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- Background section -->
+    <div class="bg">
+      <img
+        src="../../assets/bg-image-bank-stable-diffusion.png"
+        alt=""
+        class="bg-image img-fluid" />
+      <div class="gray-bg"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="main-container">
+      <!-- Navigation bar -->
+      <div class="nav-bar d-flex justify-content-between">
+        <div class="d-flex">
+          <img
+            src="../../assets/banklogo-thin.svg"
+            alt=""
+            class="nav-bar-img" />
+          <div class="m-auto" style="line-height: 2vw">
+            <p class="nav-bar-title mx-2">SIMPLE BANK</p>
+            <p class="nav-bar-title-description mx-2">
+              Smart Banking With Simple Bank
+            </p>
+          </div>
+        </div>
+        <div class=""></div>
+      </div>
+
+      <!-- Content container -->
+      <div class="content-container">
+        <!-- Login container -->
+        <div class="login-container d-flex flex-column">
+          <div class="login-title">
+            <p class="login-title-text">LOGIN</p>
+          </div>
+          <div class="input-container">
+            <!-- Username input -->
+            <input
+              type="text"
+              placeholder="Username"
+              class="input"
+              id="username" />
+            <!-- Password input -->
+            <input
+              type="password"
+              placeholder="Password"
+              class="input"
+              id="password" />
+
+            <div class="d-flex justify-content-between">
+              <p style="font-size: 80%" id="error-msg"></p>
+              <!-- Login button -->
+              <button class="login-btn" id="login-btn">
+                <p class="login-btn-text">LOGIN</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="position-fixed bottom-0 end-0 p-3 bg-transparent"
+      style="z-index: 11">
+      <div
+        id="liveToast"
+        class="toast bg-transparent"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header bg-transparent">
+          <strong class="me-auto"></strong>
+          <small></small>
+          <button
+            type="button"
+            class="btn-close bg-transparent"
+            data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-transparent"></div>
+      </div>
+    </div>
+
+    <!-- Configuration and API calls -->
+    <script src="../../config/config.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../scripts/login.js"></script>
+  </body>
+</html>
