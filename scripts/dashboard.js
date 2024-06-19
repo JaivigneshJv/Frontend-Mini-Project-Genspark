@@ -8,6 +8,17 @@ async function loadAccounts() {
     );
     console.log(response.data);
 
+    if (response.data.length === 0) {
+      const accountsContainer = document.querySelector(".left-side-accounts");
+      const noAccountsDiv = document.createElement("div");
+      noAccountsDiv.className = "no-accounts";
+      const noAccountsP = document.createElement("p");
+      noAccountsP.textContent = "No accounts found. Create One!";
+      noAccountsDiv.appendChild(noAccountsP);
+      accountsContainer.appendChild(noAccountsDiv);
+      return;
+    }
+
     // Select the container where the accounts will be appended
     const accountsContainer = document.querySelector(".left-side-accounts");
 
@@ -69,6 +80,18 @@ async function loadAccounts() {
             withCredentials: true,
           }
         );
+        if (transactionsResponse.data.length === 0) {
+          const rightSideDiv = document.querySelector(".right-side");
+          rightSideDiv.innerHTML = "";
+          const noTransactionsDiv = document.createElement("div");
+          noTransactionsDiv.className = "no-transactions";
+          const noTransactionsP = document.createElement("p");
+          noTransactionsP.textContent =
+            "No transactions found for this account.";
+          noTransactionsDiv.appendChild(noTransactionsP);
+          rightSideDiv.appendChild(noTransactionsDiv);
+          return;
+        }
         const transactionData = transactionsResponse.data.sort((a, b) => {
           return new Date(b.timestamp) - new Date(a.timestamp);
         });

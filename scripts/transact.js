@@ -52,6 +52,7 @@ async function loadAccounts() {
 // Call the loadAccounts function to populate the accounts dropdown
 loadAccounts();
 
+
 // Get the necessary elements from the DOM
 const transferContent = document.querySelector(".transaction-content");
 const transferBtn = document.querySelector(".transfer-btn");

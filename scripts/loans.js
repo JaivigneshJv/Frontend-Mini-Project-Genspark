@@ -85,17 +85,24 @@ async function loadAccounts() {
         // Create the table header
         const thead = document.createElement("thead");
         const tr = document.createElement("tr");
-        ["ID", "Amount", "Pending Amount", "Applied Date", "Details"].forEach(
-          (header) => {
-            const th = document.createElement("th");
-            th.scope = "col";
-            th.textContent = header;
-            tr.appendChild(th);
-          }
-        );
+        [
+          "ID",
+          "Amount",
+          "Pending Amount",
+          "Applied Date",
+          "Status",
+          "Details",
+        ].forEach((header) => {
+          const th = document.createElement("th");
+          th.scope = "col";
+          th.textContent = header;
+          tr.appendChild(th);
+        });
         thead.appendChild(tr);
         table.appendChild(thead);
-
+        loanResponses.data.sort((a, b) => {
+          return new Date(a.appliedDate) - new Date(b.appliedDate);
+        });
         // Create the table body
         const tbody = document.createElement("tbody");
         loanResponses.data.forEach((loan) => {
@@ -109,6 +116,7 @@ async function loadAccounts() {
               month: "long",
               day: "numeric",
             }),
+            loan.status,
           ].forEach((data) => {
             const td = document.createElement("td");
             td.textContent = data;
@@ -281,6 +289,9 @@ async function loadAccounts() {
                 payButton.type = "button";
                 payButton.className = "btn btn-dark";
                 payButton.textContent = "Pay Loan";
+                payButton.onclick = function () {
+                  window.location.href = "./pay-loan.html?id=" + loan.id;
+                };
                 modalFooter.appendChild(payButton);
               }
               modalFooter.appendChild(closeButton);

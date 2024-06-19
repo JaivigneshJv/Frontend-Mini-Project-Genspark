@@ -721,7 +721,7 @@ loansDiv.addEventListener("click", async () => {
         modalContent.appendChild(modalBody);
 
         const p2 = document.createElement("p");
-        p2.textContent = `Account ID: ${user.accountId}`;
+        p2.textContent = `Account ID: ${user.id}`;
         modalBody.appendChild(p2);
 
         const p22 = document.createElement("p");
