@@ -7,6 +7,7 @@
 
     <!-- External CSS file SCSS-->
     <link rel="stylesheet" href="../../css/auth.min.css" />
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
 
     <!-- Page title -->
     <title>Document</title>
@@ -68,7 +69,7 @@
 
             <!-- Register button -->
             <div class="d-flex justify-content-between">
-              <p style="font-size: 80%">Lorem ipsum dolor sit amet.</p>
+              <p style="font-size: 80%" id="error-msg"></p>
               <button class="login-btn">
                 <p class="login-btn-text">REGISTER</p>
               </button>
@@ -77,5 +78,31 @@
         </div>
       </div>
     </div>
+    <div
+      class="position-fixed bottom-0 end-0 p-3 bg-transparent"
+      style="z-index: 11">
+      <div
+        id="liveToast"
+        class="toast bg-transparent"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header bg-transparent">
+          <strong class="me-auto"></strong>
+          <small></small>
+          <button
+            type="button"
+            class="btn-close bg-transparent"
+            data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-transparent"></div>
+      </div>
+    </div>
+
+    <!-- Configuration and API calls -->
+    <script src="../../config/config.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../scripts/register.js"></script>
   </body>
 </html>

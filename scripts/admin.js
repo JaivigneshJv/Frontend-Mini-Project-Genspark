@@ -682,7 +682,7 @@ loansDiv.addEventListener("click", async () => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.dataset.bsToggle = "modal";
-        btn.dataset.bsTarget = `#modal-${user.accountId}`;
+        btn.dataset.bsTarget = `#modal-${user.id}`;
         btn.className = "btn btn-dark my-auto";
         btn.textContent = "Details";
         td.appendChild(btn);
@@ -692,9 +692,9 @@ loansDiv.addEventListener("click", async () => {
 
         const modal = document.createElement("div");
         modal.className = "modal fade";
-        modal.id = `modal-${user.accountId}`;
+        modal.id = `modal-${user.id}`;
         modal.tabIndex = "-1";
-        modal.ariaLabelledby = `modal-${user.accountId}-label`;
+        modal.ariaLabelledby = `modal-${user.id}-label`;
         modal.ariaHidden = "true";
         rightSideDiv.appendChild(modal);
 
@@ -712,7 +712,7 @@ loansDiv.addEventListener("click", async () => {
 
         const modalTitle = document.createElement("h5");
         modalTitle.className = "modal-title";
-        modalTitle.id = `modal-${user.accountId}-label`;
+        modalTitle.id = `modal-${user.id}-label`;
         modalTitle.textContent = `User -  ${user.id}`;
         modalHeader.appendChild(modalTitle);
 
