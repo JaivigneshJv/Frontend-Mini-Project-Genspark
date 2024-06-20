@@ -4,7 +4,11 @@
   "description": "Simple Banking System Frontend",
   "main": "./src/index.js",
   "scripts": {
-    "start": "lite-server"
+    "start": "lite-server",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +19,8 @@
     "bootstrap-icons": "^1.11.3"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^24.1.0",
     "lite-server": "^2.6.1"
   }
 }
