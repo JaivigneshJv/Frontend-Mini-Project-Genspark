@@ -33,7 +33,7 @@ a.active {
 .logout-btn {
   display: flex;
   border: 2px solid #000;
-  width: 6vw;
+  padding: 0em 1em 0em 1em;
   text-align: center;
   border-radius: 2em;
   transition: background-color 0.5s ease, color 0.5s ease;
@@ -42,5 +42,41 @@ a.active {
     cursor: pointer;
     background-color: #000;
     color: white;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .nav-bar {
+    height: 10vh;
+  }
+  #contentFrame {
+    width: 100%;
+    height: 90vh;
+    margin-top: -3vh;
+    border: none;
+    background-color: transparent;
+  }
+  .nav-barr {
+    display: flex;
+    flex-direction: row;
+  }
+  .logonbrand {
+    flex: 4;
+    display: flex;
+  }
+  .mobilenav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .mobilenav2 {
+    display: flex;
+    justify-content: center !important;
+    gap: 4vw !important;
+    align-items: center !important;
+    margin-right: auto !important;
+    font-size: 0.75em;
+    margin-top: 3vh !important;
   }
 }

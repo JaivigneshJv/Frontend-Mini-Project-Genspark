@@ -65,7 +65,7 @@ document.querySelectorAll(".left-side-accounts > div").forEach((div) => {
   div.addEventListener("click", function () {
     document.querySelector(".transact-btn").style.display = "";
     document.querySelectorAll(".left-side-accounts > div").forEach((div) => {
-      div.classList.remove("border-dark");
+      div.classList.add("border-dark-subtle");
     });
     this.classList.remove("border-dark-subtle");
     this.classList.add("border-dark");

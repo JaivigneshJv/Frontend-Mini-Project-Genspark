@@ -1,3 +1,14 @@
+document
+  .querySelector(".navbar-toggler")
+  .addEventListener("click", function () {
+    document.querySelector(".mobilenav2").classList.toggle("show");
+    var mobilenav2 = document.querySelector(".mobilenav2");
+    mobilenav2.style.display =
+      mobilenav2.style.display === "none"
+        ? "hidden !important"
+        : "hidden !important";
+  });
+
 // Function to load content into the contentFrame element
 function loadContent(url) {
   document.getElementById("contentFrame").src = url;

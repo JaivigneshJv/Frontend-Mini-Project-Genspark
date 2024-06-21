@@ -1,3 +1,10 @@
+const sortDirections = {
+  "Receiver ID": false,
+  Amount: false,
+  Type: false,
+  Timestamp: false,
+};
+
 async function loadAccounts() {
   try {
     const response = await axios.get(
@@ -80,6 +87,7 @@ async function loadAccounts() {
             withCredentials: true,
           }
         );
+        console.log(transactionsResponse.data);
         if (transactionsResponse.data.length === 0) {
           const rightSideDiv = document.querySelector(".right-side");
           rightSideDiv.innerHTML = "";
@@ -101,6 +109,48 @@ async function loadAccounts() {
 
         // Clear the right-side div
         rightSideDiv.innerHTML = "";
+        const inputGroupDiv = document.createElement("div");
+        inputGroupDiv.className = "input-group mb-3 px-3 pt-3";
+        inputGroupDiv.innerHTML = `
+    <input type="text" class="table-search form-control bg-transparent border border-dark-subtle" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+  `;
+        rightSideDiv.appendChild(inputGroupDiv);
+        document
+          .querySelector(".table-search")
+          .addEventListener("input", (e) => {
+            if (e.target.value.length > 2) {
+              const searchValue = e.target.value.toLowerCase();
+              console.log(searchValue);
+
+              const filteredData = transactionData.filter((transaction) =>
+                Object.values(transaction).some((value) => {
+                  if (
+                    typeof value === "string" &&
+                    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+$/.test(value)
+                  ) {
+                    value = new Date(value).toLocaleString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                      second: "numeric",
+                    });
+                  }
+                  return (
+                    value !== null &&
+                    value.toString().toLowerCase().includes(searchValue)
+                  );
+                })
+              );
+              // Re-render the table body with the filtered data
+              renderTableBody(filteredData, tbody);
+            } else {
+              // If the search value is too short, re-render the table body with all data
+              renderTableBody(transactionData, tbody);
+            }
+          });
 
         const div = document.createElement("div");
         div.className = "table-responsive";
@@ -111,39 +161,45 @@ async function loadAccounts() {
         // Create the table header
         const thead = document.createElement("thead");
         const tr = document.createElement("tr");
-        ["Receiver ID", "Amount", "Type", "Timestamp"].forEach((header) => {
-          const th = document.createElement("th");
-          th.scope = "col";
-          th.textContent = header;
-          tr.appendChild(th);
-        });
+        ["Receiver ID↑↓", "Amount↑↓", "Type↑↓", "Timestamp↑↓"].forEach(
+          (header) => {
+            const th = document.createElement("th");
+            th.scope = "col";
+            th.textContent = header;
+            tr.appendChild(th);
+            th.style.cursor = "pointer";
+            let mapdata = {
+              "Receiver ID↑↓": "receiverId",
+              "Amount↑↓": "amount",
+              "Type↑↓": "transactionType",
+              "Timestamp↑↓": "timestamp",
+            };
+            th.addEventListener("click", () => {
+              // Reverse the sort direction for this column
+              sortDirections[header] = !sortDirections[header];
+
+              transactionData.sort((a, b) => {
+                if (typeof a[mapdata[header]] === "string") {
+                  return sortDirections[header]
+                    ? a[mapdata[header]].localeCompare(b[mapdata[header]])
+                    : b[mapdata[header]].localeCompare(a[mapdata[header]]);
+                } else {
+                  return sortDirections[header]
+                    ? a[mapdata[header]] - b[mapdata[header]]
+                    : b[mapdata[header]] - a[mapdata[header]];
+                }
+              });
+
+              renderTableBody(transactionData, tbody);
+            });
+          }
+        );
         thead.appendChild(tr);
         table.appendChild(thead);
 
         // Create the table body
         const tbody = document.createElement("tbody");
-        console.log(transactionsResponse.data);
-        transactionData.forEach((transaction) => {
-          const tr = document.createElement("tr");
-          [
-            transaction.receiverId,
-            transaction.amount,
-            transaction.transactionType,
-            new Date(transaction.timestamp).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
-            }),
-          ].forEach((data) => {
-            const td = document.createElement("td");
-            td.textContent = data;
-            tr.appendChild(td);
-          });
-          tbody.appendChild(tr);
-        });
+        renderTableBody(transactionData, tbody);
         table.appendChild(tbody);
         div.appendChild(table);
         // Append the table to the right-side div
@@ -155,3 +211,31 @@ async function loadAccounts() {
   }
 }
 loadAccounts();
+
+function renderTableBody(transactionData, tbody) {
+  // Clear the table body
+  tbody.innerHTML = "";
+
+  // Add the new rows to the table body
+  transactionData.forEach((transaction) => {
+    const tr = document.createElement("tr");
+    [
+      transaction.receiverId,
+      transaction.amount,
+      transaction.transactionType,
+      new Date(transaction.timestamp).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }),
+    ].forEach((data) => {
+      const td = document.createElement("td");
+      td.textContent = data;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}

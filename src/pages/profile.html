@@ -15,10 +15,11 @@
   </head>
   <body>
     <div class="cont">
-      <div class="d-flex h-100 w-100">
-        <div class="col-6 d-flex align-items-center justify-content-center">
+      <div class="d-flex h-100 w-100 justify-content-center">
+        <div
+          class="col-12 col-sm-6 d-flex align-items-center justify-content-center">
           <div
-            class="w-75 h-50 border border-dark rounded-5 d-flex flex-column">
+            class="w-75 h-75 border border-dark rounded-5 d-flex flex-column">
             <!-- Profile section -->
             <div class="profile">
               <img
@@ -63,20 +64,21 @@
             </div>
 
             <!-- Redirect buttons section -->
-            <div class="redirect-btns p-2 d-flex gap-3 fw-light mx-5">
+            <div
+              class="redirect-btns p-2 d-flex flex-column gap-3 fw-light mx-5 justify-content-center align-items-center">
               <div
-                class="redirect-btn border border-dark rounded-3 p-1"
+                class="redirect-btn border border-dark rounded-3 p-1 w-100"
                 onclick='window.location.href="./change-txn-password.html"'>
                 Change Transaction Password
               </div>
               <div
                 onclick='window.location.href="./change-password.html"'
-                class="redirect-btn border border-dark rounded-3 p-1">
+                class="redirect-btn border border-dark rounded-3 p-1 w-100">
                 Change Password
               </div>
               <div
                 onclick='window.location.href="./change-email.html"'
-                class="redirect-btn border border-dark rounded-3 p-1">
+                class="redirect-btn border border-dark rounded-3 p-1 w-100">
                 Update Email
               </div>
             </div>
@@ -93,7 +95,7 @@
 
     <!-- Additional scripts -->
     <script src="../../config/config.js"></script>
-    <script src="../../config/guard.js"></script>
+    <!-- <script src="../../config/guard.js"></script> -->
 
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../../scripts/profile.js"></script>
