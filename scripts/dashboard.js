@@ -112,9 +112,9 @@ async function loadAccounts() {
         const inputGroupDiv = document.createElement("div");
         inputGroupDiv.className = "input-group mb-3 px-3 pt-3";
         inputGroupDiv.innerHTML = `
-    <input type="text" class="table-search form-control bg-transparent border border-dark-subtle" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-  `;
+          <input type="text" class="table-search form-control bg-transparent border border-dark-subtle" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        `;
         rightSideDiv.appendChild(inputGroupDiv);
         document
           .querySelector(".table-search")
@@ -202,8 +202,16 @@ async function loadAccounts() {
         renderTableBody(transactionData, tbody);
         table.appendChild(tbody);
         div.appendChild(table);
-        // Append the table to the right-side div
-        rightSideDiv.appendChild(table);
+
+        // Create the "Download PDF" button
+        const downloadButton = document.createElement("button");
+        downloadButton.textContent = "Download PDF";
+        downloadButton.className = "btn btn-dark m-3";
+        downloadButton.addEventListener("click", () => downloadPDF(table));
+
+        // Append the button and table to the right-side div
+        rightSideDiv.appendChild(div);
+        rightSideDiv.appendChild(downloadButton);
       });
     });
   } catch (error) {
@@ -236,6 +244,18 @@ function renderTableBody(transactionData, tbody) {
       td.textContent = data;
       tr.appendChild(td);
     });
+
     tbody.appendChild(tr);
   });
+}
+
+function downloadPDF(table) {
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF();
+  doc.autoTable({html: table});
+  const text = document.querySelector(".table-search").value;
+  const filename = text
+    ? `${text} - simplebank - transactions.pdf`
+    : "simplebank - transactions.pdf";
+  doc.save(filename);
 }
