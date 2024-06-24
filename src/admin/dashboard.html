@@ -13,8 +13,15 @@
       <div class="content-container">
         <!-- Left side -->
         <div class="left-side">
-          <div class="left-side-heading align-content-center">
-            <p class="mx-4 fs-5 my-auto fw-medium">Admin Dashboard</p>
+          <div
+            class="left-side-heading align-content-center d-flex justify-content-between">
+            <p class="mx-4 fs-6 my-auto fw-medium">Admin Dashboard</p>
+            <img
+              src="../../node_modules/bootstrap-icons/icons/x.svg"
+              alt=""
+              onclick="closeUserMode();"
+              class="usermode-close me-3 d-none"
+              width="7%" />
           </div>
           <div
             class="left-side-accounts d-flex flex-column gap-2 align-items-center">
@@ -29,10 +36,19 @@
                 alt="" />
             </div>
             <div
-              id="accounts"
+              id="all-accounts"
               class="border border-dark-subtle rounded-5 mt-3 d-flex align-content-center align-items-center justify-content-between"
               style="height: 1vh; padding: 5%; width: 90%">
               <div class="">ACCOUNTS</div>
+              <img
+                src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
+                alt="" />
+            </div>
+            <div
+              id="accounts"
+              class="border border-dark-subtle rounded-5 mt-3 d-flex align-content-center align-items-center justify-content-between"
+              style="height: 1vh; padding: 5%; width: 90%">
+              <div class="">CLOSING ACCOUNTS</div>
               <img
                 src="../../node_modules/bootstrap-icons/icons/chevron-right.svg"
                 alt="" />
@@ -58,16 +74,14 @@
           </div>
         </div>
         <div class="right-side d-flex flex-column">
-          <div class="">
-            <h3></h3>
-            <p></p>
+          <div class="d-flex justify-content-center align-items-center h-100">
+            Select Something on the left menu
           </div>
-          <div
-            class="transact-btn w-auto d-flex justify-content-end"
-            style="display: none !important"></div>
         </div>
       </div>
-      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div
+        class="position-fixed bottom-0 end-0 p-3"
+        style="z-index: 1200 !important">
         <div
           id="liveToast"
           class="toast"
@@ -84,6 +98,12 @@
               aria-label="Close"></button>
           </div>
           <div class="toast-body"></div>
+        </div>
+      </div>
+      <div
+        class="skeleton-container w-100 h-100 d-flex justify-content-center align-content-center align-items-center d-none">
+        <div class="spinner-border text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </div>
