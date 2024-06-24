@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="right-side d-flex flex-column justify-content-between">
+        <div class="right-side d-flex flex-column">
           <div class="">
             <h3></h3>
             <p></p>
@@ -67,10 +67,29 @@
             style="display: none !important"></div>
         </div>
       </div>
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto"></strong>
+            <small></small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"></button>
+          </div>
+          <div class="toast-body"></div>
+        </div>
+      </div>
     </div>
     <!-- JavaScript dependencies -->
     <script src="../../config/config.js"></script>
-    <script src="../../config/guard-admin.js"></script>
+    <!-- <script src="../../config/guard-admin.js"></script> -->
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../../scripts/admin.js"></script>
   </body>
