@@ -8,12 +8,7 @@ const content = {
     - <strong>Availability:</strong> Accessible 24x7 through various channels such as mobile apps, ATMs, and online banking.<br>
     - <strong>Secure Transactions:</strong> Uses multi-layered security to ensure safe and secure transactions.<br>
     - <strong>Transfer Limits:</strong> Generally, the upper limit for IMPS transactions is ₹2 lakh per day, but this can vary based on the bank's policy.<br><br>
-
-    <strong>Use Cases:</strong><br>
-    - Paying bills and making purchases.<br>
-    - Transferring funds to family and friends.<br>
-    - Emergency fund transfers outside of regular banking hours.<br><br>
- `,
+`,
   RTGS: `
     <strong>Real Time Gross Settlement (RTGS)</strong><br><br>
     Real Time Gross Settlement (RTGS) is a high-value fund transfer system where transactions are processed and settled in real time and on an individual basis. It is primarily used for transactions that require immediate clearing and are typically of large amounts.<br><br>
@@ -23,11 +18,6 @@ const content = {
     - <strong>High-Value Transfers:</strong> Designed for large-value transactions with a minimum limit of ₹2 lakh and no upper limit.<br>
     - <strong>Business Hours:</strong> Available during the business hours of the bank, typically from 9:00 AM to 4:30 PM on weekdays, with limited hours on Saturdays.<br>
     - <strong>Secure and Reliable:</strong> Ensures the highest level of security and reliability for high-value transactions.<br><br>
-
-    <strong>Use Cases:</strong><br>
-    - Large corporate payments.<br>
-    - Interbank transfers.<br>
-    - High-value individual transactions.<br><br>
 
     <strong>Charges:</strong><br>
     - Banks may charge a fee for RTGS transactions, which can vary based on the amount being transferred.<br>
@@ -41,11 +31,6 @@ const content = {
     - <strong>Wide Accessibility:</strong> Available across all NEFT-enabled bank branches in India.<br>
     - <strong>No Minimum or Maximum Limit:</strong> Suitable for both low and high-value transactions, with no minimum or maximum transaction limit.<br>
     - <strong>Business Hours:</strong> Available during the bank's business hours, with transactions processed in defined settlement cycles.<br><br>
-
-    <strong>Use Cases:</strong><br>
-    - Routine payments like utility bills, loan EMIs, and credit card payments.<br>
-    - Regular fund transfers to family and friends.<br>
-    - Corporate payments and salary disbursements.<br><br>
 
     <strong>Settlement Timings:</strong><br>
     - NEFT operates in half-hourly batches, usually starting from 8:00 AM to 7:00 PM on working days.<br>
