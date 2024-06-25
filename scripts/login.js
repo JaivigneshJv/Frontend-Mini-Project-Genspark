@@ -4,7 +4,7 @@ window.onload = async function () {
     const response = await axios.get(`${config.API_URL}/User/profile`, {
       withCredentials: true,
     });
-    console.log(response.data);
+
     if (response.status === 200) {
       if (response.data.role === "Admin") {
         // Redirect to the admin dashboard if the user is an admin
@@ -72,7 +72,6 @@ document
         console.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
       // Display error message for invalid credentials
       document.getElementById("error-msg").innerText = "Invalid Credentials";
     }

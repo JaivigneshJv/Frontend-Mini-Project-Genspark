@@ -10,7 +10,6 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
     initialDeposit: formData.get("initialDeposit"),
     transactionPassword: formData.get("transactionPassword"),
   };
-  console.log(data);
 
   try {
     // Send the create account request to the API
@@ -21,7 +20,7 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
         withCredentials: true,
       }
     );
-    // console.log(response.data);
+    //
 
     // If the request is successful, show the success message
     if (response.status === 200) {

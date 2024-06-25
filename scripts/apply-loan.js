@@ -8,8 +8,6 @@ async function loadAccounts() {
         withCredentials: true,
       }
     );
-    console.log(response.data);
-
     // Populate the select dropdown with the account options
     const select = document.querySelector("select");
     response.data.forEach((account) => {
@@ -27,12 +25,13 @@ async function loadAccounts() {
     });
   } catch (error) {
     window.location.href = "../index.html";
-    console.error(error);
   }
 }
 
-// Call the loadAccounts function to populate the accounts dropdown
-loadAccounts();
+window.onload = () => {
+  // Call the loadAccounts function to populate the accounts dropdown
+  loadAccounts();
+};
 
 document.querySelector(".interest-btn").addEventListener("click", async () => {
   // Disable the submit button to prevent multiple clicks
@@ -53,7 +52,6 @@ document.querySelector(".interest-btn").addEventListener("click", async () => {
         withCredentials: true,
       }
     );
-    console.log(response.data);
 
     // If the request is successful, show the success message
     if (response.status === 200) {
@@ -108,7 +106,6 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
     appliedDate: new Date().toISOString(),
     targetDate: new Date(formData.get("targetDate")).toISOString(),
   };
-  console.log(data);
 
   try {
     // Send the create account request to the API
@@ -119,7 +116,7 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
         withCredentials: true,
       }
     );
-    // console.log(response.data);
+    //
 
     // If the request is successful, show the success message
     if (response.status === 200) {
@@ -156,7 +153,7 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
     var toast = new bootstrap.Toast(toastLiveExample);
     toast.show();
     setTimeout(() => {
-      window.location.href = "./dashboard.html";
+      window.location.href = "../index.html";
     }, 3000);
   }
 });

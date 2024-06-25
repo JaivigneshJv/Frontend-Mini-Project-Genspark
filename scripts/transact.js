@@ -26,7 +26,6 @@ async function loadAccounts() {
         withCredentials: true,
       }
     );
-    console.log(response.data);
 
     // Populate the select dropdown with the account options
     const select = document.querySelector("select");
@@ -52,7 +51,6 @@ async function loadAccounts() {
 // Call the loadAccounts function to populate the accounts dropdown
 loadAccounts();
 
-
 // Get the necessary elements from the DOM
 const transferContent = document.querySelector(".transaction-content");
 const transferBtn = document.querySelector(".transfer-btn");
@@ -69,7 +67,6 @@ transferBtn.addEventListener("click", async () => {
   // Get the form data
   const form = document.querySelector("form");
   const formData = new FormData(form);
-  console.log(formData);
 
   // Prepare the data for the API request
   const data = {
@@ -89,7 +86,6 @@ transferBtn.addEventListener("click", async () => {
         withCredentials: true,
       }
     );
-    console.log(response.data);
 
     // If the request is successful, show the OTP content
     if (response.status === 200) {
@@ -149,7 +145,6 @@ confirmBtn.addEventListener("click", async () => {
 
     // If the verification is successful, redirect to transactions.html
     if (response.status === 200) {
-      console.log(transactionType);
       if (transactionType !== "IMPS") {
         confirmBtnError.innerHTML =
           "Transaction Request Has been Raised! Redirecting...";

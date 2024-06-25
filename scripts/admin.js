@@ -1,6 +1,6 @@
-// Get the transaction type from the URL query parameters
+// Get the UserMode Detail from the URL query parameters
 const usermode = JSON.parse(localStorage.getItem("usermode-user"));
-console.log(usermode);
+
 if (usermode !== null) {
   const usermodeClose = document.querySelector(".usermode-close");
   usermodeClose.classList.remove("d-none");
@@ -16,12 +16,12 @@ if (usermode !== null) {
         }
       );
       window.usermodeAccounts = response.data.map((account) => account.id);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
   getAccounts();
 }
+
+//Query Selectors
 const userDiv = document.getElementById("users");
 const accountDiv = document.getElementById("accounts");
 const transactionsDiv = document.getElementById("transactions");
@@ -174,9 +174,7 @@ userDiv.addEventListener("click", async () => {
     rightSideDiv.appendChild(table);
     rightSideDiv.appendChild(skeletonContainer);
     skeletonContainer.classList.add("d-none");
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 });
 
 function renderUserTableBody(userData, tbody) {
@@ -352,6 +350,7 @@ function createUserModal(user) {
   modalFooter.appendChild(closeButton);
 }
 
+// Event listener for the account card click
 allAccounts.addEventListener("click", async () => {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
@@ -370,7 +369,6 @@ allAccounts.addEventListener("click", async () => {
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res.data);
       if (usermode !== null) {
         res.data = res.data.filter((item) => item.userId === usermode.id);
       }
@@ -486,7 +484,7 @@ allAccounts.addEventListener("click", async () => {
       skeletonContainer.classList.add("d-none");
     })
     .catch((err) => {
-      // console.log(err);
+      //
     });
 });
 
@@ -648,6 +646,7 @@ function renderAllAccountTableBody(accountData, tbody) {
   });
 }
 
+// Event listener for the account card click
 accountDiv.addEventListener("click", async () => {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
@@ -794,7 +793,7 @@ accountDiv.addEventListener("click", async () => {
       skeletonContainer.classList.add("d-none");
     })
     .catch((err) => {
-      // console.log(err);
+      //
     });
 });
 
@@ -942,6 +941,7 @@ function renderAccountTableBody(accountData, tbody) {
   });
 }
 
+// Event listener for the transactions card click
 transactionsDiv.addEventListener("click", async () => {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
@@ -1092,7 +1092,7 @@ transactionsDiv.addEventListener("click", async () => {
       skeletonContainer.classList.add("d-none");
     })
     .catch((err) => {
-      // console.log(err);
+      //
     });
 });
 
@@ -1100,7 +1100,7 @@ function renderTransactionTableBody(trasactionData, tbody) {
   tbody.innerHTML = "";
 
   trasactionData.forEach((user) => {
-    // console.log(user);
+    //
     const tr = document.createElement("tr");
     [user.id, user.amount, user.transactionType].forEach((data) => {
       const td = document.createElement("td");
@@ -1251,6 +1251,7 @@ function renderTransactionTableBody(trasactionData, tbody) {
   });
 }
 
+// Event listener for the loans card click
 loansDiv.addEventListener("click", async () => {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
@@ -1272,7 +1273,7 @@ loansDiv.addEventListener("click", async () => {
       res.data.sort(
         (a, b) => new Date(a.appliedDate) - new Date(b.appliedDate)
       );
-      console.log(res.data);
+
       if (usermode !== null) {
         res.data = res.data.filter((item) =>
           usermodeAccounts.includes(item.accountId)
@@ -1398,7 +1399,7 @@ loansDiv.addEventListener("click", async () => {
       skeletonContainer.classList.add("d-none");
     })
     .catch((err) => {
-      // console.log(err);
+      //
     });
 });
 
@@ -1422,7 +1423,7 @@ function renderLoanTableBody(loanData, tbody) {
     td1.textContent = durationInDays + " days";
     tr.appendChild(td1);
 
-    // console.log(durationInDays);
+    //
 
     const td = document.createElement("td");
     const btn = document.createElement("button");
@@ -1558,6 +1559,7 @@ function renderLoanTableBody(loanData, tbody) {
   });
 }
 
+// Event listener for disabling the user mode
 function closeUserMode() {
   localStorage.removeItem("usermode-user");
   var toastLiveExample = document.getElementById("liveToast");

@@ -4,8 +4,8 @@
     <!-- Meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
+    <title>Simple Banking System</title>
+    <link rel="icon" type="image/png" href="../../assets/banklogo.svg" />
     <!-- External CSS -->
     <link rel="stylesheet" href="../../css/home.min.css" />
 
@@ -56,6 +56,7 @@
           <div
             class="mobilenav2 collapse d-md-flex justify-content-end align-items-center gap-3 my-auto h-100 mx-5"
             id="navBarToggleContent">
+            <!-- Dashboard Link -->
             <a
               id="dashboard-link"
               href="#"
@@ -63,24 +64,28 @@
               class="text-dark fw-light"
               >Dashboard</a
             >
+            <!-- Transactions Link -->
             <a
               href="#"
               onclick="loadContent('transactions.html')"
               class="text-dark fw-light"
               >Transactions</a
             >
+            <!-- Loans Link -->
             <a
               href="#"
               onclick="loadContent('loans.html')"
               class="text-dark fw-light"
               >Loans</a
             >
+            <!-- Profile Link -->
             <a
               href="#"
               onclick="loadContent('profile.html')"
               class="text-dark fw-light"
               >Profile</a
             >
+            <!-- Logout Button -->
             <div class="logout-btn" id="logout-btn">
               <p class="m-auto">Logout</p>
             </div>

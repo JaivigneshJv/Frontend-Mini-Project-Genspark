@@ -1,270 +1,286 @@
+// Import Bootstrap SCSS file
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Import Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+// Styling for the body element
 body {
-  font-family: "Poppins", "San";
-  background-color: transparent;
+  font-family: "Poppins", "San"; // Set font family
+  background-color: transparent; // Set background color
 }
 
+// Container for the content
 .cont {
-  height: 99vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 99vh; // Set height
+  display: flex; // Use flexbox for layout
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
 }
 
+// Container for the main content
 .content-container {
-  border: 1px solid rgba(0, 0, 0, 0.159);
-  height: 90%;
-  width: 90%;
-  padding: 4%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.159); // Set border
+  height: 90%; // Set height
+  width: 90%; // Set width
+  padding: 4%; // Set padding
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); // Add box shadow
+  border-radius: 10px; // Add border radius
+  display: flex; // Use flexbox for layout
 }
 
+// Left side of the content container
 .left-side,
 .right-side {
-  flex: 1;
+  flex: 1; // Use flexbox to distribute space evenly
 }
 
 .left-side {
-  display: flex;
-  flex-direction: column;
+  display: flex; // Use flexbox for layout
+  flex-direction: column; // Arrange items vertically
   &-heading {
-    flex: 1;
-    border: 1px solid black;
-    border-radius: 40px;
-    margin-bottom: 1vw;
+    flex: 1; // Use flexbox to distribute space evenly
+    border: 1px solid black; // Set border
+    border-radius: 40px; // Add border radius
+    margin-bottom: 1vw; // Set margin
   }
   &-accounts {
-    flex: 9;
-    border: 1px solid black;
-    border-radius: 30px;
-    overflow: auto;
+    flex: 9; // Use flexbox to distribute space evenly
+    border: 1px solid black; // Set border
+    border-radius: 30px; // Add border radius
+    overflow: auto; // Enable scrolling
     scrollbar-width: none; /* For Firefox */
   }
   &-create-btn {
-    cursor: pointer;
-    margin-right: 60%;
-    flex: 0.5;
-    justify-content: flex-end;
-    margin-top: 1vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    border: 1px solid black;
-    background-color: transparent;
-    color: black;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer; // Set cursor to pointer
+    margin-right: 60%; // Set margin
+    flex: 0.5; // Use flexbox to distribute space evenly
+    justify-content: flex-end; // Align to the end of the container
+    margin-top: 1vw; // Set margin
+    display: flex; // Use flexbox for layout
+    justify-content: center; // Center horizontally
+    align-items: center; // Center vertically
+    border-radius: 30px; // Add border radius
+    border: 1px solid black; // Set border
+    background-color: transparent; // Set background color
+    color: black; // Set text color
+    transition: color 0.3s ease, background-color 0.3s ease; // Add transition effect
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: black; // Change background color on hover
+      color: white; // Change text color on hover
     }
   }
 }
 
+// Styling for the redirect button
 .redirect-btn {
-  cursor: pointer;
-  color: black;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer; // Set cursor to pointer
+  color: black; // Set text color
+  transition: color 0.3s ease, background-color 0.3s ease; // Add transition effect
   &:hover {
-    color: white;
-    background-color: black;
+    color: white; // Change text color on hover
+    background-color: black; // Change background color on hover
   }
 }
 
+// Right side of the content container
 .right-side {
-  border: 1px solid black;
-  margin: 1vw;
-  border-radius: 30px;
+  border: 1px solid black; // Set border
+  margin: 1vw; // Set margin
+  border-radius: 30px; // Add border radius
 }
 
+// Styling for the account card
 .card-account {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-  margin: 1.5vw;
-  border-radius: 30px;
-  height: 30%;
-  line-height: 3vh;
+  display: flex; // Use flexbox for layout
+  justify-content: space-between; // Space items evenly
+  border: 1px solid black; // Set border
+  margin: 1.5vw; // Set margin
+  border-radius: 30px; // Add border radius
+  height: 30%; // Set height
+  line-height: 3vh; // Set line height
   &-title {
-    font-size: 1vw;
-    font-weight: 300;
-    margin: 1vw;
+    font-size: 1vw; // Set font size
+    font-weight: 300; // Set font weight
+    margin: 1vw; // Set margin
   }
   &-details {
-    font-size: 1vw;
-    font-weight: 300;
-    margin: 1vw;
+    font-size: 1vw; // Set font size
+    font-weight: 300; // Set font weight
+    margin: 1vw; // Set margin
   }
-}
-.right-side {
-  overflow: auto;
-  height: 100%;
-  padding: 1vw;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  scrollbar-width: none;
 }
 
+// Styling for the right side container
+.right-side {
+  overflow: auto; // Enable scrolling
+  height: 100%; // Set height
+  padding: 1vw; // Set padding
+  &::-webkit-scrollbar {
+    display: none; // Hide scrollbar
+  }
+  scrollbar-width: none; // Hide scrollbar
+}
+
+// Styling for table cells
 table tr td,
 table tr th {
-  background-color: rgba(252, 252, 252, 0) !important;
+  background-color: rgba(252, 252, 252, 0) !important; // Set background color
 }
+
+// Media query for smaller screens
 @media (max-width: 768px) {
   .cont {
-    height: 99vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 99vh; // Set height
+    display: flex; // Use flexbox for layout
+    justify-content: center; // Center horizontally
+    align-items: center; // Center vertically
   }
 
   .content-container {
-    border: 1px solid rgba(0, 0, 0, 0.159);
-    height: 90%;
-    width: 90%;
-    padding: 4%;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.159); // Set border
+    height: 90%; // Set height
+    width: 90%; // Set width
+    padding: 4%; // Set padding
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); // Add box shadow
+    border-radius: 10px; // Add border radius
+    display: flex; // Use flexbox for layout
+    flex-direction: column; // Arrange items vertically
   }
 
   .left-side,
   .right-side {
-    flex: 1;
+    flex: 1; // Use flexbox to distribute space evenly
   }
 
   .left-side {
-    display: flex;
-    flex-direction: column;
+    display: flex; // Use flexbox for layout
+    flex-direction: column; // Arrange items vertically
     &-heading {
-      flex: 1;
-      border: 1px solid black;
-      margin: 1vw;
-      border-radius: 30px;
+      flex: 1; // Use flexbox to distribute space evenly
+      border: 1px solid black; // Set border
+      margin: 1vw; // Set margin
+      border-radius: 30px; // Add border radius
     }
     &-accounts {
-      flex: 9;
-      border: 1px solid black;
-      margin: 1vw;
-      border-radius: 30px;
+      flex: 9; // Use flexbox to distribute space evenly
+      border: 1px solid black; // Set border
+      margin: 1vw; // Set margin
+      border-radius: 30px; // Add border radius
     }
   }
 
   .right-side {
-    border: 1px solid black;
-    margin: 1vw;
-    border-radius: 30px;
+    border: 1px solid black; // Set border
+    margin: 1vw; // Set margin
+    border-radius: 30px; // Add border radius
   }
 }
 
+// Media query for smaller screens
 @media screen and (max-width: 576px) {
   .right-side {
-    font-size: smaller;
-    padding: 2vh;
+    font-size: smaller; // Set smaller font size
+    padding: 2vh; // Set padding
   }
   .left-side {
     &-heading p {
-      font-size: 3vw !important;
+      font-size: 3vw !important; // Set larger font size
     }
     &-create-btn {
-      cursor: pointer;
-      margin-right: 50%;
-      margin-left: 5%;
-      flex: 0.5;
-      justify-content: flex-end;
-      margin-top: 1vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 30px;
-      border: 1px solid black;
-      background-color: transparent;
-      color: black;
-      transition: color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer; // Set cursor to pointer
+      margin-right: 50%; // Set margin
+      margin-left: 5%; // Set margin
+      flex: 0.5; // Use flexbox to distribute space evenly
+      justify-content: flex-end; // Align to the end of the container
+      margin-top: 1vw; // Set margin
+      display: flex; // Use flexbox for layout
+      justify-content: center; // Center horizontally
+      align-items: center; // Center vertically
+      border-radius: 30px; // Add border radius
+      border: 1px solid black; // Set border
+      background-color: transparent; // Set background color
+      color: black; // Set text color
+      transition: color 0.3s ease, background-color 0.3s ease; // Add transition effect
       &:hover {
-        background-color: black;
-        color: white;
+        background-color: black; // Change background color on hover
+        color: white; // Change text color on hover
       }
       & p {
-        font-size: 1.5vh;
+        font-size: 1.5vh; // Set font size
       }
     }
   }
   .card-account {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    margin: 2vw;
-    padding: 3vw;
-    padding-left: 2vh;
-    border-radius: 30px;
-    height: 30%;
-    line-height: 0.25vh;
+    display: flex; // Use flexbox for layout
+    justify-content: space-between; // Space items evenly
+    border: 1px solid black; // Set border
+    margin: 2vw; // Set margin
+    padding: 3vw; // Set padding
+    padding-left: 2vh; // Set padding
+    border-radius: 30px; // Add border radius
+    height: 30%; // Set height
+    line-height: 0.25vh; // Set line height
     &-title {
-      font-size: 2vh;
-      font-weight: 300;
-      margin: 1vw;
+      font-size: 2vh; // Set font size
+      font-weight: 300; // Set font weight
+      margin: 1vw; // Set margin
     }
     &-details {
-      font-size: 1.5vh;
-      font-weight: 300;
-      margin: 1vw;
+      font-size: 1.5vh; // Set font size
+      font-weight: 300; // Set font weight
+      margin: 1vw; // Set margin
     }
   }
   .profile {
     & img {
-      width: 6vh !important;
+      width: 6vh !important; // Set image width
     }
   }
   .email-details {
-    display: flex;
-    align-items: flex-start;
-    text-align: center;
+    display: flex; // Use flexbox for layout
+    align-items: flex-start; // Align items to the start
+    text-align: center; // Center text
     & img {
-      width: 2.5vh !important;
+      width: 2.5vh !important; // Set image width
     }
     & p {
-      font-size: 1.5vh;
+      font-size: 1.5vh; // Set font size
     }
   }
   .dob-details {
-    display: flex;
-    align-items: flex-start;
-    text-align: center;
+    display: flex; // Use flexbox for layout
+    align-items: flex-start; // Align items to the start
+    text-align: center; // Center text
     & img {
-      width: 2.5vh !important;
+      width: 2.5vh !important; // Set image width
     }
     & p {
-      font-size: 1.5vh;
+      font-size: 1.5vh; // Set font size
     }
   }
   .contact-details {
-    display: flex;
-    align-items: flex-start;
-    text-align: center;
+    display: flex; // Use flexbox for layout
+    align-items: flex-start; // Align items to the start
+    text-align: center; // Center text
     & img {
-      width: 2.5vh !important;
+      width: 2.5vh !important; // Set image width
     }
     & p {
-      font-size: 1.5vh;
+      font-size: 1.5vh; // Set font size
     }
   }
   .redirect-btns {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2vw;
+    display: flex; // Use flexbox for layout
+    flex-direction: column; // Arrange items vertically
+    justify-content: center; // Center vertically
+    gap: 2vw; // Set gap between items
   }
   .redirect-btn {
-    font-size: smaller;
-    width: 100% !important;
+    font-size: smaller; // Set smaller font size
+    width: 100% !important; // Set width to 100%
   }
   .created-container {
-    font-size: smaller;
+    font-size: smaller; // Set smaller font size
   }
 }

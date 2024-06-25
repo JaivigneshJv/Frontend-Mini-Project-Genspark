@@ -1,19 +1,23 @@
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "../node_modules/bootstrap/scss/bootstrap.scss"; // Importing Bootstrap SCSS file
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); // Importing Google Fonts
 
+/* Styling for the body */
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif; // Setting the font family
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
+/* Styling for the background */
 .bg {
   position: relative;
   background-color: #dfe2e4;
   height: 100vh;
   z-index: 0;
 }
+
+/* Styling for the background image */
 .bg-image {
   z-index: 0;
   position: absolute;
@@ -25,6 +29,8 @@ body {
   height: 80vh;
   margin: auto;
 }
+
+/* Styling for the gray background */
 .gray-bg {
   z-index: 0;
   position: absolute;
@@ -37,6 +43,7 @@ body {
   border-radius: 0 0 0 0;
 }
 
+/* Styling for the main container */
 .main-container {
   position: absolute;
   z-index: 2;
@@ -45,14 +52,20 @@ body {
   top: 0;
   left: 0;
 }
+
+/* Styling for the navigation bar */
 .nav-bar {
   height: 10vh;
   width: 100vw !important;
 }
+
+/* Styling for the content container */
 .content-container {
   margin-top: 8vh;
   margin-left: 4vw;
   height: auto;
+
+  /* Styling for the title heading within the content container */
   &-title-heading {
     text-align: left;
     font-weight: 600;
@@ -60,27 +73,36 @@ body {
     line-height: 1.2em;
   }
 }
+
+/* Styling for the menus */
 .menus {
   font-size: 1.25vw;
 }
+
+/* Styling for the logo */
 .logo {
   margin-left: 1vw;
   width: 1.5vw;
 }
+
+/* Styling for the login button */
 .login-btn {
   display: flex;
   border: 2px solid #000;
   width: 8vw;
   text-align: center;
   border-radius: 2em;
-  transition: background-color 0.5s ease, color 0.5s ease; // Add this line
+  transition: background-color 0.5s ease, color 0.5s ease; // Adding transition effect
 
+  /* Styling for the hover state of the login button */
   &:hover {
     cursor: pointer;
     background-color: #000;
     color: white;
   }
 }
+
+/* Styling for the register button */
 .register-btn {
   display: flex;
   border: 2px solid #000;
@@ -89,44 +111,60 @@ body {
   width: 8vw;
   text-align: center;
   border-radius: 2em;
-  transition: background-color 0.5s ease, color 0.5s ease; // Add this line
+  transition: background-color 0.5s ease, color 0.5s ease; // Adding transition effect
+
+  /* Styling for the hover state of the register button */
   &:hover {
     cursor: pointer;
     background-color: white;
     color: #000;
   }
+
+  /* Styling for the text within the register button */
   &-text {
     font-size: 1.2vw;
   }
 }
+
+/* Styling for the box content */
 .box-content {
   width: 12vw;
   padding: 0.7em;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
 }
+
+/* Styling for the badges */
 .badges {
+  /* Styling for the text within the badges */
   &-text {
     font-size: 1.25vw;
     font-weight: 500;
     z-index: 10;
     margin-top: 5vh;
   }
+
+  /* Styling for the image within the badges */
   &-img {
     width: 4vw;
     position: absolute;
     top: -10%;
     left: 30%;
   }
+
+  /* Styling for the description within the badges */
   &-description {
     text-align: left;
     font-size: 0.7vw;
   }
 }
+
+/* Styling for the mobile navigation bar */
 .nav-bar-mobile {
   display: none;
 }
 
+/* Media query for screens with max width of 768px */
 @media (max-width: 768px) {
   body {
     font-family: "Inter", sans-serif;
@@ -135,13 +173,21 @@ body {
     background-color: #e4e7e8;
     overflow: hidden;
   }
+
+  /* Hide the background */
   .bg {
     display: none;
   }
+
+  /* Styling for the main container */
   .main-container {
   }
+
+  /* Styling for the navigation bar */
   .nav-bar {
     display: none;
+
+    /* Styling for the mobile navigation bar */
     &-mobile {
       margin: auto;
       align-items: center;
@@ -151,30 +197,42 @@ body {
       justify-content: space-between;
       border-bottom: 0.5px solid rgb(184, 181, 181);
       box-shadow: 0 4px 2px -2px gray;
+
+      /* Styling for the burger icon within the mobile navigation bar */
       &-burger-icon {
         color: #000;
         width: 7vw;
       }
     }
   }
+
+  /* Styling for the login button */
   .login-btn {
     display: flex;
     border: 2px solid #000;
     width: 25vw;
     text-align: center;
     border-radius: 2em;
-    transition: background-color 0.5s ease, color 0.5s ease; // Add this line
+    transition: background-color 0.5s ease, color 0.5s ease; // Adding transition effect
+
+    /* Styling for the hover state of the login button */
     &:hover {
       cursor: pointer;
       background-color: #000;
       color: white;
     }
   }
+
+  /* Styling for the content container */
   .content-container {
     margin-top: 2vh;
+
+    /* Styling for the half-one section within the content container */
     &-half-one {
       width: 100vw;
     }
+
+    /* Styling for the title heading within the content container */
     &-title-heading {
       text-align: left;
       font-weight: 600;
@@ -182,6 +240,8 @@ body {
       line-height: 1.2em;
       margin-right: 5vw;
     }
+
+    /* Styling for the title description within the content container */
     &-title-description {
       text-align: left;
       font-weight: 400;
@@ -191,6 +251,8 @@ body {
       text-align: justify;
     }
   }
+
+  /* Styling for the register button */
   .register-btn {
     display: flex;
     border: 2px solid #000;
@@ -200,35 +262,48 @@ body {
     height: 5vh;
     text-align: center;
     border-radius: 2em;
-    transition: background-color 0.5s ease, color 0.5s ease; // Add this line
+    transition: background-color 0.5s ease, color 0.5s ease; // Adding transition effect
+
+    /* Styling for the hover state of the register button */
     &:hover {
       cursor: pointer;
       background-color: white;
       color: #000;
     }
+
+    /* Styling for the text within the register button */
     &-text {
       font-size: 4vw;
     }
   }
+
+  /* Styling for the box content */
   .box-content {
     width: 30vw;
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
   }
+
+  /* Styling for the badges */
   .badges {
+    /* Styling for the text within the badges */
     &-text {
       font-size: 5vw;
       font-weight: 500;
       z-index: 10;
       margin-top: 5vh;
     }
+
+    /* Styling for the image within the badges */
     &-img {
       width: 15vw;
       position: absolute;
       top: -10%;
       left: 25%;
     }
+
+    /* Styling for the description within the badges */
     &-description {
       text-align: left;
       font-size: 3vw;

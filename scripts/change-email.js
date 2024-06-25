@@ -14,7 +14,6 @@ transferBtn.addEventListener("click", async () => {
   // Get the form data
   const form = document.querySelector("form");
   const formData = new FormData(form);
-  console.log(formData);
 
   // Prepare the data for the API request
   const data = {
@@ -90,7 +89,6 @@ confirmBtn.addEventListener("click", async () => {
 
     // If the verification is successful, redirect to transactions.html
     if (response.status === 200) {
-      console.log(transactionType);
       var toastLiveExample = document.getElementById("liveToast");
       var toastHeaderStrong = toastLiveExample.querySelector(
         ".toast-header strong"

@@ -59,8 +59,18 @@ async function getUserProfile() {
     const response = await axios.get(`${config.API_URL}/User/profile`, {
       withCredentials: true,
     });
+    if (
+      response.data.role !== "Admin" &&
+      window.location.pathname === "/admin/home.html"
+    ) {
+      window.location.href = "../auth/login.html";
+    } else if (
+      response.data.role !== "User" &&
+      window.location.pathname === "/pages/home.html"
+    ) {
+      window.location.href = "../auth/login.html";
+    }
   } catch (error) {
-    console.log(error);
     // Redirect to the login page if there's an error
     window.location.href = "../auth/login.html";
   }
@@ -100,6 +110,5 @@ document
       }
     } catch (error) {
       window.location.href = "../index.html";
-      console.log(error);
     }
   });

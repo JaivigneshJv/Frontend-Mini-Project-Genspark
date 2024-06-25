@@ -70,7 +70,6 @@ document
         console.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
       // Display error message for invalid credentials
       document.getElementById("error-msg").innerText = "Invalid Credentials";
     }

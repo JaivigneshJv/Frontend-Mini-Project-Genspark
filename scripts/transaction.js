@@ -64,3 +64,5 @@ document.querySelectorAll(".left-side-accounts > div").forEach((div) => {
           `;
   });
 });
+
+document.querySelector(".left-side-accounts > div").click();

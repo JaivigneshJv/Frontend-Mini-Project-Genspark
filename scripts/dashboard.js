@@ -13,7 +13,6 @@ async function loadAccounts() {
         withCredentials: true,
       }
     );
-    console.log(response.data);
 
     if (response.data.length === 0) {
       const accountsContainer = document.querySelector(".left-side-accounts");
@@ -87,7 +86,7 @@ async function loadAccounts() {
             withCredentials: true,
           }
         );
-        console.log(transactionsResponse.data);
+
         if (transactionsResponse.data.length === 0) {
           const rightSideDiv = document.querySelector(".right-side");
           rightSideDiv.innerHTML = "";
@@ -121,7 +120,6 @@ async function loadAccounts() {
           .addEventListener("input", (e) => {
             if (e.target.value.length > 2) {
               const searchValue = e.target.value.toLowerCase();
-              console.log(searchValue);
 
               const filteredData = transactionData.filter((transaction) =>
                 Object.values(transaction).some((value) => {
@@ -214,9 +212,7 @@ async function loadAccounts() {
         rightSideDiv.appendChild(downloadButton);
       });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 loadAccounts();
 

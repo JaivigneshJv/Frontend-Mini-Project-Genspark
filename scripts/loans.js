@@ -8,7 +8,6 @@ async function loadAccounts() {
         withCredentials: true,
       }
     );
-    console.log(response.data);
 
     // Select the container where the accounts will be appended
     const accountsContainer = document.querySelector(".left-side-accounts");
@@ -100,7 +99,6 @@ async function loadAccounts() {
           .addEventListener("input", (e) => {
             if (e.target.value.length > 2) {
               const searchValue = e.target.value.toLowerCase();
-              console.log(searchValue);
 
               const filteredData = loanResponses.filter((transaction) =>
                 Object.values(transaction).some((value) => {
@@ -201,9 +199,7 @@ async function loadAccounts() {
         rightSideDiv.appendChild(table);
       });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 
 // Call the loadAccounts function to start loading the accounts

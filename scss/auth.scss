@@ -1,6 +1,10 @@
+// Import Bootstrap SCSS file
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Import Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+// Set global styles for the body
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -8,12 +12,15 @@ body {
   overflow: hidden;
 }
 
+// Background styles
 .bg {
   position: relative;
   background-color: #dfe2e4;
   height: 100vh;
   z-index: 0;
 }
+
+// Background image styles
 .bg-image {
   z-index: 0;
   position: absolute;
@@ -25,6 +32,8 @@ body {
   height: 80vh;
   margin: auto;
 }
+
+// Gray background styles
 .gray-bg {
   z-index: 0;
   position: absolute;
@@ -36,6 +45,8 @@ body {
   height: 100vh;
   border-radius: 0 0 0 0;
 }
+
+// Main container styles
 .main-container {
   position: absolute;
   z-index: 2;
@@ -44,23 +55,33 @@ body {
   top: 0;
   left: 0;
 }
+
+// Navigation bar styles
 .nav-bar {
   height: 20vh;
   width: 100vw !important;
   padding: 2vw;
+
+  // Navigation bar image styles
   &-img {
     width: 5vw;
   }
+
+  // Navigation bar title styles
   &-title {
     font-size: 2.5vw;
     font-weight: 200;
     margin-top: 2vh;
+
+    // Navigation bar title description styles
     &-description {
       font-size: 3vw;
       font-weight: 300;
     }
   }
 }
+
+// Content container styles
 .content-container {
   display: flex;
   height: 80vh;
@@ -68,17 +89,23 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+// Login container styles
 .login-container {
   display: flex;
   height: 40vh;
   width: 30vw;
 }
+
+// Login container for registration styles
 .login-container-register {
   display: flex;
   height: 40vh;
   width: 30vw;
   margin-top: -25vh;
 }
+
+// Login title styles
 .login-title {
   width: 10vw;
   height: 3.5vh;
@@ -87,11 +114,15 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
+
+  // Login title text styles
   &-text {
     font-size: 1.5vw;
     color: white;
   }
 }
+
+// Input container styles
 .input-container {
   display: flex;
   flex-direction: column;
@@ -99,6 +130,8 @@ body {
   width: 100%;
   height: 100%;
 }
+
+// Input styles
 .input {
   background-color: transparent;
   border: 1px solid black;
@@ -106,11 +139,16 @@ body {
   border-radius: 30px;
   margin-bottom: 2vh;
   padding-left: 1vw;
+
+  // Hide placeholder text when input is focused
   &:focus::placeholder {
     color: transparent;
   }
+
   caret-color: transparent;
 }
+
+// Login button styles
 .login-btn {
   display: flex;
   align-self: flex-end;
@@ -123,6 +161,7 @@ body {
   margin-top: 1.5vh;
 }
 
+// Media query for smaller screens
 @media (max-width: 768px) {
   body {
     font-family: "Inter", sans-serif;
@@ -131,26 +170,38 @@ body {
     background-color: #e4e7e8;
     overflow: hidden;
   }
+
+  // Hide background on smaller screens
   .bg {
     display: none;
   }
+
+  // Adjust navigation bar styles for smaller screens
   .nav-bar {
     height: 10vh;
     width: 100vw !important;
     padding: 2vw;
+
+    // Adjust navigation bar image size for smaller screens
     &-img {
       width: 15vw;
     }
+
+    // Adjust navigation bar title styles for smaller screens
     &-title {
       font-size: 6vw;
       font-weight: 200;
       margin-top: 2vh;
+
+      // Adjust navigation bar title description styles for smaller screens
       &-description {
         font-size: 5vw;
         font-weight: 300;
       }
     }
   }
+
+  // Adjust content container styles for smaller screens
   .content-container {
     display: flex;
     height: 80vh;
@@ -158,16 +209,22 @@ body {
     justify-content: center;
     align-items: center;
   }
+
+  // Adjust login container styles for smaller screens
   .login-container {
     display: flex;
     height: 40vh;
     width: 70vw;
   }
+
+  // Adjust login container for registration styles for smaller screens
   .login-container-register {
     display: flex;
     height: 40vh;
     width: 70vw;
   }
+
+  // Adjust login title styles for smaller screens
   .login-title {
     width: 25vw;
     height: 3vh;
@@ -176,11 +233,15 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
+
+    // Adjust login title text styles for smaller screens
     &-text {
       font-size: 4vw;
       color: white;
     }
   }
+
+  // Adjust input container styles for smaller screens
   .input-container {
     display: flex;
     flex-direction: column;
@@ -188,6 +249,8 @@ body {
     width: 100%;
     height: 100%;
   }
+
+  // Adjust input styles for smaller screens
   .input {
     background-color: transparent;
     border: 1px solid black;
@@ -195,11 +258,16 @@ body {
     border-radius: 30px;
     margin-bottom: 2vh;
     padding-left: 3vw;
+
+    // Hide placeholder text when input is focused
     &:focus::placeholder {
       color: transparent;
     }
+
     caret-color: transparent;
   }
+
+  // Adjust login button styles for smaller screens
   .login-btn {
     display: flex;
     align-self: flex-end;
@@ -211,6 +279,8 @@ body {
     border: 1px solid gray;
     margin-top: 1.5vh;
     font-size: 3vw;
+
+    // Adjust login button text styles for smaller screens
     &-text {
       font-size: 3.5vw;
     }
