@@ -13,6 +13,7 @@
     - [Installation](#installation)
     - [Running the Application](#running-the-application)
   - [Directory Structure](#directory-structure)
+  - [Azure](#azure)
   - [Relevant Repos](#relevant-repos)
 
 ## Overview
@@ -110,6 +111,12 @@ Frontend-Mini-Project-Genspark
 ├─ package.json
 ├─ README.md
 ├─ scripts
+│  ├─ admin
+│  │  ├─ account-dashboard.js
+│  │  ├─ closing-accounts-dashboard.js
+│  │  ├─ loans-dashboard.js
+│  │  ├─ transaction-dashboard.js
+│  │  └─ users-dashboard.js
 │  ├─ admin.js
 │  ├─ apply-loan.js
 │  ├─ change-email.js
@@ -132,6 +139,7 @@ Frontend-Mini-Project-Genspark
 │  ├─ main.scss
 │  └─ pages.scss
 └─ src
+   ├─ 404.html
    ├─ admin
    │  ├─ dashboard.html
    │  └─ home.html
@@ -154,6 +162,12 @@ Frontend-Mini-Project-Genspark
       └─ transactions.html
 
 ```
+
+## Azure
+
+[Deployed - FE](http://74.225.241.169:3000/src/auth/login.html)
+
+[Deployed - BE](https://74.225.241.169:3000/swagger/index.html)
 
 ## Relevant Repos
 
