@@ -4,6 +4,32 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
 
   const form = document.querySelector("form");
   const formData = new FormData(form);
+  const accountType = formData.get("accountType");
+  const initialDeposit = formData.get("initialDeposit");
+  const transactionPassword = formData.get("transactionPassword");
+  const confirmTransactionPassword = formData.get("confirmTransactionPassword");
+  const validationErrors = document.querySelector(".transfer-btn-error");
+  // Validation
+  if (!accountType) {
+    validationErrors.innerText = "Please select an account type.";
+    document.querySelector(".submit-btn").classList.remove("disabled");
+    return;
+  }
+  if (!initialDeposit || initialDeposit <= 0) {
+    validationErrors.innerText = "Please enter a valid initial deposit amount.";
+    document.querySelector(".submit-btn").classList.remove("disabled");
+    return;
+  }
+  if (!transactionPassword) {
+    validationErrors.innerText = "Please enter a transaction password.";
+    document.querySelector(".submit-btn").classList.remove("disabled");
+    return;
+  }
+  if (transactionPassword !== confirmTransactionPassword) {
+    validationErrors.innerText = "Transaction passwords do not match.";
+    document.querySelector(".submit-btn").classList.remove("disabled");
+    return;
+  }
 
   const data = {
     accountType: formData.get("accountType"),

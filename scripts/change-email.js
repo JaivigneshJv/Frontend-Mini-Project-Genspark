@@ -14,6 +14,17 @@ transferBtn.addEventListener("click", async () => {
   // Get the form data
   const form = document.querySelector("form");
   const formData = new FormData(form);
+  const newEmail = formData.get("emailAddress");
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validate the email address
+  if (!emailRegex.test(newEmail)) {
+    transferBtnError.innerHTML = "Please enter a valid email address";
+    transferBtn.classList.remove("disabled");
+    return; // Stop the function if validation fails
+  }
 
   // Prepare the data for the API request
   const data = {
@@ -74,7 +85,13 @@ confirmBtn.addEventListener("click", async () => {
   const form1 = document.querySelector("#otp-form");
   const formData1 = new FormData(form1);
   const otp = formData1.get("otp");
-
+  // Validate the OTP (basic validation to check if it's not empty)
+  if (!otp) {
+    confirmBtnError.innerHTML = "OTP cannot be empty";
+    otpContent.classList.remove("disabled");
+    confirmBtn.classList.remove("disabled");
+    return; // Stop the function if validation fails
+  }
   try {
     // Verify the transaction with the OTP
     const response = await axios.put(

@@ -50,11 +50,43 @@ function togglePasswordVisibility(inputId, imgId) {
 }
 
 document.querySelector(".submit-btn").addEventListener("click", async () => {
+  event.preventDefault(); // Prevent form submission to allow for validation
+
+  // Clear previous error messages
+  const transferBtnError = document.querySelector(".transfer-btn-error");
+  transferBtnError.innerHTML = "";
+
   // Disable the submit button to prevent multiple clicks
-  document.querySelector(".submit-btn").classList.add("disabled");
+  const submitBtn = document.querySelector(".submit-btn");
+  submitBtn.classList.add("disabled");
 
   const form = document.querySelector("form");
   const formData = new FormData(form);
+  const originalPassword = formData.get("originalTransactionPassword");
+  const newPassword = formData.get("transactionPassword");
+  const confirmPassword = formData.get("confirmTransactionPassword");
+
+  // Validation checks
+  if (!originalPassword) {
+    transferBtnError.innerHTML =
+      "Please enter your original transaction password.";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
+
+  if (!newPassword || newPassword.length < 8) {
+    transferBtnError.innerHTML =
+      "New password must be at least 8 characters long.";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    transferBtnError.innerHTML =
+      "New password and confirmation password do not match.";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
   const accountId = formData.get("account");
   const data = {
     transactionPassword: formData.get("transactionPassword"),

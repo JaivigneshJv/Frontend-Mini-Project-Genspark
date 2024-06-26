@@ -96,8 +96,35 @@ document.querySelector(".interest-btn").addEventListener("click", async () => {
 document.querySelector(".submit-btn").addEventListener("click", async () => {
   // Disable the submit button to prevent multiple clicks
   document.querySelector(".submit-btn").classList.add("disabled");
-
   const form = document.querySelector("form");
+  const accountSelect = document.querySelector("select[name='account']");
+  const loanAmountInput = document.querySelector("input[name='loanAmount']");
+  const targetDateInput = document.querySelector("input[name='targetDate']");
+  const submitBtn = document.querySelector(".submit-btn");
+  const errorText = document.querySelector(".transfer-btn-error");
+
+  if (
+    !accountSelect.value ||
+    !loanAmountInput.value ||
+    !targetDateInput.value
+  ) {
+    errorText.innerText = "Please fill in all fields";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
+
+  if (isNaN(loanAmountInput.value)) {
+    errorText.innerText = "Loan amount must be a number";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
+
+  if (loanAmountInput.value < 1) {
+    errorText.innerText = "Loan amount must be greater than 0";
+    submitBtn.classList.remove("disabled");
+    return;
+  }
+
   const formData = new FormData(form);
 
   const data = {

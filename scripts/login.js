@@ -27,11 +27,14 @@ document
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    if (username === "" || password === "") {
-      // Display error message if fields are empty
+    if (!username || !password) {
       document.getElementById("error-msg").innerText =
-        "Please fill in all fields";
-      return;
+        "Username and password cannot be empty";
+      return; // Stop the function if validation fails
+    } else if (username.length < 4 || password.length < 4) {
+      document.getElementById("error-msg").innerText =
+        "Username and password must be at least 4 characters long";
+      return; // Stop the function if validation fails
     }
 
     try {
@@ -69,7 +72,7 @@ document
       } else {
         // Display error message if login fails
         document.getElementById("error-msg").innerText = response.data.message;
-        console.error(response.data.message);
+        // console.error(response.data.message);
       }
     } catch (error) {
       // Display error message for invalid credentials
