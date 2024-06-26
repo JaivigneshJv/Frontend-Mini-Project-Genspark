@@ -1,35 +1,39 @@
-// Event listener for the account card click
-const allAccounts = document.getElementById("all-accounts");
-
-allAccounts.addEventListener("click", async () => {
-  setAccountDivActive();
-  const skeletonContainer = document.querySelector(".skeleton-container");
+// Event listener for the loans card click
+const loansDiv = document.getElementById("loans");
+loansDiv.addEventListener("click", async () => {
+  setLoanDivActive();
+  let skeletonContainer = document.querySelector(".skeleton-container");
   skeletonContainer.classList.contains("d-none")
     ? skeletonContainer.classList.remove("d-none")
     : skeletonContainer.classList.add("d-none");
-  fetchAccountDivData(skeletonContainer);
+  fetchLoanData(skeletonContainer);
 });
 
-//helper Functions
-function setAccountDivActive() {
+//helper function
+function setLoanDivActive() {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
   );
   elements.forEach((element) => {
     element.classList.add("border-dark-subtle");
   });
-  allAccounts.classList.remove("border-dark-subtle");
-  allAccounts.classList.add("border-dark");
+  loansDiv.classList.remove("border-dark-subtle");
+  loansDiv.classList.add("border-dark");
 }
-
-async function fetchAccountDivData(skeletonContainer) {
+async function fetchLoanData(skeletonContainer) {
   await axios
-    .get(`${config.API_URL}/Admin/get-all-accounts`, {
+    .get(`${config.API_URL}/Admin/loans/request/pending`, {
       withCredentials: true,
     })
     .then((res) => {
+      res.data.sort(
+        (a, b) => new Date(a.appliedDate) - new Date(b.appliedDate)
+      );
+
       if (usermode !== null) {
-        res.data = res.data.filter((item) => item.userId === usermode.id);
+        res.data = res.data.filter((item) =>
+          usermodeAccounts.includes(item.accountId)
+        );
       }
       if (res.data.length === 0) {
         const rightSideDiv = document.querySelector(".right-side");
@@ -37,7 +41,7 @@ async function fetchAccountDivData(skeletonContainer) {
         const noTransactionsDiv = document.createElement("div");
         noTransactionsDiv.className = "no-transactions";
         const noTransactionsP = document.createElement("p");
-        noTransactionsP.textContent = "No accounts found for this user.";
+        noTransactionsP.textContent = "No Loans found for this user.";
         noTransactionsDiv.appendChild(noTransactionsP);
         rightSideDiv.appendChild(noTransactionsDiv);
         rightSideDiv.appendChild(skeletonContainer);
@@ -86,25 +90,33 @@ async function fetchAccountDivData(skeletonContainer) {
               );
             })
           );
-          renderAllAccountTableBody(filteredData, tbody);
+          renderLoanTableBody(filteredData, tbody);
         } else {
-          renderAllAccountTableBody(res.data, tbody);
+          renderLoanTableBody(res.data, tbody);
         }
       });
 
       // Create the table header
       const thead = document.createElement("thead");
       const tr = document.createElement("tr");
-      let headers = ["ID↑↓", "Account Type↑↓", "Balance↑↓", "Details"];
+      let headers = [
+        "ID↑↓",
+        "Amount↑↓",
+        "Pending Amount↑↓",
+        "Duration",
+        "Details",
+      ];
       let sortDirections = {
         "ID↑↓": false,
-        "Account Type↑↓": false,
-        "Balance↑↓": false,
+        "Amount↑↓": false,
+        "Pending Amount↑↓": false,
+        "Duration↑↓": false,
       };
       let mapdata = {
         "ID↑↓": "id",
-        "Account Type↑↓": "accountType",
-        "Balance↑↓": "balance",
+        "Amount↑↓": "amount",
+        "Pending Amount↑↓": "pendingAmount",
+        "Duration↑↓": "appliedDate",
       };
       headers.forEach((header) => {
         const th = document.createElement("th");
@@ -126,7 +138,7 @@ async function fetchAccountDivData(skeletonContainer) {
                   : new Date(b[mapdata[header]]) - new Date(a[mapdata[header]]);
               }
             });
-            renderAllAccountTableBody(res.data, tbody);
+            renderLoanTableBody(res.data, tbody);
           });
         }
       });
@@ -136,7 +148,7 @@ async function fetchAccountDivData(skeletonContainer) {
 
       // Create the table body
       const tbody = document.createElement("tbody");
-      renderAllAccountTableBody(res.data, tbody);
+      renderLoanTableBody(res.data, tbody);
       table.appendChild(tbody);
       rightSideDiv.appendChild(table);
       rightSideDiv.appendChild(skeletonContainer);
@@ -147,34 +159,35 @@ async function fetchAccountDivData(skeletonContainer) {
     });
 }
 
-function renderAllAccountTableBody(accountData, tbody) {
+function renderLoanTableBody(loanData, tbody) {
   tbody.innerHTML = "";
 
-  accountData.forEach((user) => {
+  loanData.forEach((user) => {
     const tr = document.createElement("tr");
-    [user.id, user.accountType, user.balance].forEach((data) => {
+    [user.id, user.amount, user.pendingAmount].forEach((data) => {
       const td = document.createElement("td");
       td.textContent = data;
       tr.appendChild(td);
     });
+    let appliedDate = new Date(user.appliedDate);
+    let targetDate = new Date(user.targetDate);
+    let durationInMilliseconds = targetDate - appliedDate;
+    let durationInDays = Math.ceil(
+      durationInMilliseconds / (1000 * 60 * 60 * 24)
+    );
+    const td1 = document.createElement("td");
+    td1.textContent = durationInDays + " days";
+    tr.appendChild(td1);
+
+    //
 
     const td = document.createElement("td");
     const btn = document.createElement("button");
     btn.type = "button";
     btn.dataset.bsToggle = "modal";
-    btn.dataset.bsTarget = `#modal-${user.accountId}`;
-    if (user.isApproved === true) {
-      btn.className = "btn btn-dark-subtle my-auto";
-      btn.textContent = "Approved";
-      btn.disabled = true;
-    } else if (user.isRejected === true) {
-      btn.className = "btn btn-dark-subtle my-auto";
-      btn.textContent = "Rejected";
-      btn.disabled = true;
-    } else {
-      btn.className = "btn btn-dark my-auto";
-      btn.textContent = "Details";
-    }
+    btn.dataset.bsTarget = `#modal-${user.id}`;
+    btn.className = "btn btn-dark my-auto";
+    btn.textContent = "Details";
     td.appendChild(btn);
     tr.appendChild(td);
 
@@ -182,9 +195,9 @@ function renderAllAccountTableBody(accountData, tbody) {
 
     const modal = document.createElement("div");
     modal.className = "modal fade";
-    modal.id = `modal-${user.accountId}`;
+    modal.id = `modal-${user.id}`;
     modal.tabIndex = "-1";
-    modal.ariaLabelledby = `modal-${user.accountId}-label`;
+    modal.ariaLabelledby = `modal-${user.id}-label`;
     modal.ariaHidden = "true";
     const rightSideDiv = document.querySelector(".right-side");
     rightSideDiv.appendChild(modal);
@@ -212,36 +225,33 @@ function renderAllAccountTableBody(accountData, tbody) {
     modalContent.appendChild(modalBody);
 
     const p2 = document.createElement("p");
-    p2.textContent = `Account Type: ${user.accountType}`;
+    p2.textContent = `Account ID: ${user.id}`;
     modalBody.appendChild(p2);
 
+    const p22 = document.createElement("p");
+    p22.textContent = `Amount: ${user.amount}`;
+    modalBody.appendChild(p22);
+
     const p12 = document.createElement("p");
-    p12.textContent = `Balance: ${user.balance}`;
+    p12.textContent = `Pending Amount : ${user.pendingAmount}`;
     modalBody.appendChild(p12);
 
+    const p122 = document.createElement("p");
+    p122.textContent = `Duration : ${durationInDays}`;
+    modalBody.appendChild(p122);
+
     const p3 = document.createElement("p");
-    p3.textContent = `Created Date: ${new Date(
-      user.createdDate
-    ).toLocaleDateString("en-US", {
+    p3.textContent = `Duration: ${new Date(user.appliedDate).toLocaleDateString(
+      "en-US",
+      {
+        year: "numeric",
+        month: "long",
+      }
+    )} - ${new Date(user.targetDate).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
-      day: "numeric",
     })}`;
     modalBody.appendChild(p3);
-
-    const p31 = document.createElement("p");
-    p31.textContent = `Updated Date: ${new Date(
-      user.updatedDate
-    ).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}`;
-    modalBody.appendChild(p31);
-
-    const p121 = document.createElement("p");
-    p121.textContent = `Active: ${user.isActive ? "Yes" : "No"}`;
-    modalBody.appendChild(p121);
 
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
@@ -269,7 +279,7 @@ function renderAllAccountTableBody(accountData, tbody) {
       loanRepayment.disabled = true;
       loanRepayments.disabled = true;
       const repaymentsResponse = await axios.post(
-        `${config.API_URL}/Admin/request/approve/close-account/${user.id}`,
+        `${config.API_URL}/Admin/loans/request/approve/${user.id}`,
         {},
         {
           withCredentials: true,
@@ -287,7 +297,7 @@ function renderAllAccountTableBody(accountData, tbody) {
       loanRepayment.disabled = true;
       loanRepayments.disabled = true;
       const repaymentsResponse = await axios.post(
-        `${config.API_URL}/Admin/request/reject/close-account/${user.id}`,
+        `${config.API_URL}/Admin/loans/request/reject/${user.id}`,
         {},
         {
           withCredentials: true,

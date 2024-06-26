@@ -1,35 +1,46 @@
 // Event listener for the account card click
-const allAccounts = document.getElementById("all-accounts");
-
-allAccounts.addEventListener("click", async () => {
-  setAccountDivActive();
+const accountDiv = document.getElementById("accounts");
+accountDiv.addEventListener("click", async () => {
+  setClosingDivActive();
   const skeletonContainer = document.querySelector(".skeleton-container");
   skeletonContainer.classList.contains("d-none")
     ? skeletonContainer.classList.remove("d-none")
     : skeletonContainer.classList.add("d-none");
-  fetchAccountDivData(skeletonContainer);
+  fetchClosingAccountData(skeletonContainer);
 });
 
-//helper Functions
-function setAccountDivActive() {
+//Helper Functions
+function setClosingDivActive() {
   let elements = document.querySelectorAll(
     "#users, #accounts, #transactions, #loans, #all-accounts"
   );
   elements.forEach((element) => {
     element.classList.add("border-dark-subtle");
   });
-  allAccounts.classList.remove("border-dark-subtle");
-  allAccounts.classList.add("border-dark");
+  accountDiv.classList.remove("border-dark-subtle");
+  accountDiv.classList.add("border-dark");
 }
 
-async function fetchAccountDivData(skeletonContainer) {
+async function fetchClosingAccountData(skeletonContainer) {
   await axios
-    .get(`${config.API_URL}/Admin/get-all-accounts`, {
+    .get(`${config.API_URL}/Admin/get-all-accounts-close-request`, {
       withCredentials: true,
     })
     .then((res) => {
+      let rejectedUsers = res.data.filter((user) => user.isRejected);
+      let approvedUsers = res.data.filter((user) => user.isApproved);
+      let pendingUsers = res.data.filter(
+        (user) => !user.isRejected && !user.isApproved
+      );
+      pendingUsers.sort(
+        (a, b) => new Date(a.createdDate) - new Date(b.createdDate)
+      );
+      let sortedData = [...pendingUsers, ...rejectedUsers, , ...approvedUsers];
+      res.data = sortedData;
       if (usermode !== null) {
-        res.data = res.data.filter((item) => item.userId === usermode.id);
+        res.data = res.data.filter((item) =>
+          usermodeAccounts.includes(item.accountId)
+        );
       }
       if (res.data.length === 0) {
         const rightSideDiv = document.querySelector(".right-side");
@@ -37,7 +48,8 @@ async function fetchAccountDivData(skeletonContainer) {
         const noTransactionsDiv = document.createElement("div");
         noTransactionsDiv.className = "no-transactions";
         const noTransactionsP = document.createElement("p");
-        noTransactionsP.textContent = "No accounts found for this user.";
+        noTransactionsP.textContent =
+          "No closing accounts found for this user.";
         noTransactionsDiv.appendChild(noTransactionsP);
         rightSideDiv.appendChild(noTransactionsDiv);
         rightSideDiv.appendChild(skeletonContainer);
@@ -86,25 +98,25 @@ async function fetchAccountDivData(skeletonContainer) {
               );
             })
           );
-          renderAllAccountTableBody(filteredData, tbody);
+          renderAccountTableBody(filteredData, tbody);
         } else {
-          renderAllAccountTableBody(res.data, tbody);
+          renderAccountTableBody(res.data, tbody);
         }
       });
 
       // Create the table header
       const thead = document.createElement("thead");
       const tr = document.createElement("tr");
-      let headers = ["ID↑↓", "Account Type↑↓", "Balance↑↓", "Details"];
+      let headers = ["ID↑↓", "Account Type↑↓", "Description↑↓", "Details↑↓"];
       let sortDirections = {
         "ID↑↓": false,
         "Account Type↑↓": false,
-        "Balance↑↓": false,
+        "Description↑↓": false,
       };
       let mapdata = {
-        "ID↑↓": "id",
+        "ID↑↓": "accountId",
         "Account Type↑↓": "accountType",
-        "Balance↑↓": "balance",
+        "Description↑↓": "description",
       };
       headers.forEach((header) => {
         const th = document.createElement("th");
@@ -126,7 +138,7 @@ async function fetchAccountDivData(skeletonContainer) {
                   : new Date(b[mapdata[header]]) - new Date(a[mapdata[header]]);
               }
             });
-            renderAllAccountTableBody(res.data, tbody);
+            renderAccountTableBody(res.data, tbody);
           });
         }
       });
@@ -136,7 +148,7 @@ async function fetchAccountDivData(skeletonContainer) {
 
       // Create the table body
       const tbody = document.createElement("tbody");
-      renderAllAccountTableBody(res.data, tbody);
+      renderAccountTableBody(res.data, tbody);
       table.appendChild(tbody);
       rightSideDiv.appendChild(table);
       rightSideDiv.appendChild(skeletonContainer);
@@ -147,12 +159,12 @@ async function fetchAccountDivData(skeletonContainer) {
     });
 }
 
-function renderAllAccountTableBody(accountData, tbody) {
+function renderAccountTableBody(accountData, tbody) {
   tbody.innerHTML = "";
 
   accountData.forEach((user) => {
     const tr = document.createElement("tr");
-    [user.id, user.accountType, user.balance].forEach((data) => {
+    [user.accountId, user.accountType, user.description].forEach((data) => {
       const td = document.createElement("td");
       td.textContent = data;
       tr.appendChild(td);
@@ -203,8 +215,8 @@ function renderAllAccountTableBody(accountData, tbody) {
 
     const modalTitle = document.createElement("h5");
     modalTitle.className = "modal-title";
-    modalTitle.id = `modal-${user.id}-label`;
-    modalTitle.textContent = `User -  ${user.id}`;
+    modalTitle.id = `modal-${user.accountId}-label`;
+    modalTitle.textContent = `User -  ${user.accountId}`;
     modalHeader.appendChild(modalTitle);
 
     const modalBody = document.createElement("div");
@@ -216,32 +228,18 @@ function renderAllAccountTableBody(accountData, tbody) {
     modalBody.appendChild(p2);
 
     const p12 = document.createElement("p");
-    p12.textContent = `Balance: ${user.balance}`;
+    p12.textContent = `Description: ${user.description}`;
     modalBody.appendChild(p12);
 
     const p3 = document.createElement("p");
-    p3.textContent = `Created Date: ${new Date(
-      user.createdDate
+    p3.textContent = `Applied Date: ${new Date(
+      user.requestDate
     ).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     })}`;
     modalBody.appendChild(p3);
-
-    const p31 = document.createElement("p");
-    p31.textContent = `Updated Date: ${new Date(
-      user.updatedDate
-    ).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}`;
-    modalBody.appendChild(p31);
-
-    const p121 = document.createElement("p");
-    p121.textContent = `Active: ${user.isActive ? "Yes" : "No"}`;
-    modalBody.appendChild(p121);
 
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";

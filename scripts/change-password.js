@@ -1,3 +1,23 @@
+window.onload = async () => {
+  await checkLogin();
+};
+//Check Login Session
+const checkLogin = async () => {
+  try {
+    const response = await axios.get(`${config.API_URL}/User/profile`, {
+      withCredentials: true,
+    });
+
+    if (response.status === 200) {
+      // User is logged in
+      return;
+    }
+  } catch (error) {
+    // Redirect to the login page if the user is not logged in
+    window.location.href = "../index.html";
+  }
+};
+
 function togglePasswordVisibility(inputId, imgId) {
   var input = document.getElementById(inputId);
   var img = document.getElementById(imgId);
